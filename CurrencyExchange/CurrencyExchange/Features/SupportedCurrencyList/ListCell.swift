@@ -1,5 +1,5 @@
 //
-//  CurrencyCell.swift
+//  ListCell.swift
 //  CurrencyExchange
 //
 //  Created by wenyu zhao on 2020/7/30.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class CurrencyCell: UITableViewCell {
+class ListCell: UITableViewCell {
     @IBOutlet var currencyLabel: UILabel!
-    @IBOutlet var currencyNumberLabel: UILabel!
-    @IBOutlet var currencyRate: UILabel!
+    
+    func configureCell(currency: String?) {
+        currencyLabel.text = currency
+    }
 }

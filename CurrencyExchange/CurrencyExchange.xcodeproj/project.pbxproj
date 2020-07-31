@@ -24,6 +24,9 @@
 		941F4D7624D30EFF00CF8A10 /* CurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7524D30EFF00CF8A10 /* CurrencyViewModel.swift */; };
 		941F4D7824D3230C00CF8A10 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7724D3230C00CF8A10 /* ListCell.swift */; };
 		941F4D7A24D3234A00CF8A10 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7924D3234A00CF8A10 /* ListViewController.swift */; };
+		941F4D7C24D3A45D00CF8A10 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7B24D3A45D00CF8A10 /* ListViewModel.swift */; };
+		941F4D7E24D3FEAE00CF8A10 /* ViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */; };
+		941F4D8024D3FFEC00CF8A10 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		941F4D7524D30EFF00CF8A10 /* CurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewModel.swift; sourceTree = "<group>"; };
 		941F4D7724D3230C00CF8A10 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		941F4D7924D3234A00CF8A10 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		941F4D7B24D3A45D00CF8A10 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObserver.swift; sourceTree = "<group>"; };
+		941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,26 +84,77 @@
 		941F4D4724D1718400CF8A10 /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				941F4D8624D4083700CF8A10 /* Utils */,
+				941F4D8524D4082200CF8A10 /* Model */,
+				941F4D8224D407E400CF8A10 /* Features */,
+				941F4D8124D407C600CF8A10 /* Service */,
+				941F4D5624D1718700CF8A10 /* Info.plist */,
 				941F4D4824D1718400CF8A10 /* AppDelegate.swift */,
 				941F4D4A24D1718400CF8A10 /* SceneDelegate.swift */,
-				941F4D4C24D1718400CF8A10 /* CurrencyViewController.swift */,
-				941F4D4E24D1718400CF8A10 /* Main.storyboard */,
-				941F4D7724D3230C00CF8A10 /* ListCell.swift */,
-				941F4D7924D3234A00CF8A10 /* ListViewController.swift */,
-				941F4D7524D30EFF00CF8A10 /* CurrencyViewModel.swift */,
-				941F4D7324D30DCA00CF8A10 /* CurrencyCell.swift */,
 				941F4D5124D1718700CF8A10 /* Assets.xcassets */,
 				941F4D5324D1718700CF8A10 /* LaunchScreen.storyboard */,
-				941F4D5624D1718700CF8A10 /* Info.plist */,
-				941F4D5C24D1755300CF8A10 /* Constants.swift */,
-				941F4D5E24D1B08400CF8A10 /* ServiceManager.swift */,
-				941F4D7124D1C96400CF8A10 /* Services.swift */,
-				941F4D6D24D1C84E00CF8A10 /* SupportedCurrency.swift */,
-				941F4D6F24D1C8C400CF8A10 /* LiveCurrency.swift */,
-				941F4D6B24D1C38F00CF8A10 /* BaseEndPoint.swift */,
-				941F4D6324D1B48600CF8A10 /* ServiceError.swift */,
+				941F4D4E24D1718400CF8A10 /* Main.storyboard */,
 			);
 			path = CurrencyExchange;
+			sourceTree = "<group>";
+		};
+		941F4D8124D407C600CF8A10 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D6B24D1C38F00CF8A10 /* BaseEndPoint.swift */,
+				941F4D6324D1B48600CF8A10 /* ServiceError.swift */,
+				941F4D5E24D1B08400CF8A10 /* ServiceManager.swift */,
+				941F4D7124D1C96400CF8A10 /* Services.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		941F4D8224D407E400CF8A10 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D8424D4080700CF8A10 /* LiveCurrency */,
+				941F4D8324D407F200CF8A10 /* SupportedCurrencyList */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		941F4D8324D407F200CF8A10 /* SupportedCurrencyList */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D7724D3230C00CF8A10 /* ListCell.swift */,
+				941F4D7924D3234A00CF8A10 /* ListViewController.swift */,
+				941F4D7B24D3A45D00CF8A10 /* ListViewModel.swift */,
+			);
+			path = SupportedCurrencyList;
+			sourceTree = "<group>";
+		};
+		941F4D8424D4080700CF8A10 /* LiveCurrency */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D7324D30DCA00CF8A10 /* CurrencyCell.swift */,
+				941F4D4C24D1718400CF8A10 /* CurrencyViewController.swift */,
+				941F4D7524D30EFF00CF8A10 /* CurrencyViewModel.swift */,
+			);
+			path = LiveCurrency;
+			sourceTree = "<group>";
+		};
+		941F4D8524D4082200CF8A10 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D6F24D1C8C400CF8A10 /* LiveCurrency.swift */,
+				941F4D6D24D1C84E00CF8A10 /* SupportedCurrency.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		941F4D8624D4083700CF8A10 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				941F4D5C24D1755300CF8A10 /* Constants.swift */,
+				941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */,
+				941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +233,9 @@
 				941F4D7024D1C8C400CF8A10 /* LiveCurrency.swift in Sources */,
 				941F4D6C24D1C38F00CF8A10 /* BaseEndPoint.swift in Sources */,
 				941F4D4924D1718400CF8A10 /* AppDelegate.swift in Sources */,
+				941F4D7C24D3A45D00CF8A10 /* ListViewModel.swift in Sources */,
+				941F4D8024D3FFEC00CF8A10 /* Bindable.swift in Sources */,
+				941F4D7E24D3FEAE00CF8A10 /* ViewModelObserver.swift in Sources */,
 				941F4D7824D3230C00CF8A10 /* ListCell.swift in Sources */,
 				941F4D7A24D3234A00CF8A10 /* ListViewController.swift in Sources */,
 				941F4D6E24D1C84E00CF8A10 /* SupportedCurrency.swift in Sources */,
