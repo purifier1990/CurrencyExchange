@@ -35,6 +35,7 @@ class CurrencyViewController: UIViewController, Bindable {
         currencyNumberTextField.delegate = self
         currencyNumberTextField.addTarget(self, action: #selector(self.editingChanged), for: .editingChanged)
         viewModel?.fetchLiveCurrencyRate()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard)))
     }
     
     @IBAction func quoteCurrencyButton(sender: Any) {
@@ -52,38 +53,40 @@ class CurrencyViewController: UIViewController, Bindable {
     }
     
     @objc func editingChanged() {
-        
+        if let text = currencyNumberTextField.text {
+            if text.isEmpty {
+                viewModel?.currentNumber = "100.0"
+            } else {
+                viewModel?.currentNumber = text
+            }
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        _ = currencyNumberTextField.resignFirstResponder()
     }
 }
 
 extension CurrencyViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
     
 }
 
 extension CurrencyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.currencyList.count ?? 0
+        return viewModel?.currencyCellModel.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as? CurrencyCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as? CurrencyCell, let viewModel = viewModel else {
             return UITableViewCell()
         }
         
-        guard let currencySymbol = viewModel?.currencyList[indexPath.row], let rate = viewModel?.rateMap[currencySymbol] else {
-            return UITableViewCell()
-        }
-        
-        guard let text = currencyNumberTextField.text, !text.isEmpty else {
-            cell.configureCell(currencySymbol: currencySymbol,
-                               currencyNumber: viewModel?.calculateCovertedNumber(currentNumber: currencyNumberTextField.placeholder ?? "100.0", convertedCurrency: currencySymbol),
-            currencyRate: String(describing: rate))
-            return cell
-        }
-        
-        cell.configureCell(currencySymbol: currencySymbol,
-                           currencyNumber: viewModel?.calculateCovertedNumber(currentNumber: text, convertedCurrency: currencySymbol),
-                           currencyRate: String(describing: rate))
+        cell.configureCell(currencySymbol: viewModel.currencyCellModel[indexPath.row].currencySymbol,
+                           currencyNumber: viewModel.currencyCellModel[indexPath.row].currencyNumber,
+                           currencyRate: viewModel.currencyCellModel[indexPath.row].currencyRate)
         return cell
     }
 }

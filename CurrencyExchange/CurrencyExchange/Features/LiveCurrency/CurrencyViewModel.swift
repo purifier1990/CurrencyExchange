@@ -12,6 +12,8 @@ protocol CurrencyViewModelType: ViewModelObservable {
     var baseCurrency: String { set get }
     var currencyList: [String] { set get }
     var rateMap: [String: Double] { set get }
+    var currencyCellModel: [CurrencyCellModel] { get set }
+    var currentNumber: String { set get }
     
     func fetchLiveCurrencyRate()
     func calculateCovertedNumber(currentNumber: String, convertedCurrency: String) -> String
@@ -22,17 +24,19 @@ class CurrencyViewModel: CurrencyViewModelType {
     
     var baseCurrency = "USD" {
         didSet {
-            callObserver()
+            if oldValue != baseCurrency {
+                updateCurrencyCellModel()
+            }
         }
     }
-    var currencyList = [String]() {
+    var currencyList = [String]()
+    var rateMap = [String: Double]()
+    var currencyCellModel = [CurrencyCellModel]()
+    var currentNumber = "100.0" {
         didSet {
-            callObserver()
-        }
-    }
-    var rateMap = [String: Double]() {
-        didSet {
-            callObserver()
+            if oldValue != currentNumber {
+                updateCurrencyCellModel()
+            }
         }
     }
     
@@ -45,10 +49,28 @@ class CurrencyViewModel: CurrencyViewModelType {
                     self?.currencyList.append(String(key.suffix(3)))
                     self?.rateMap[String(key.suffix(3))] = Double(value)
                 }
+                self?.updateCurrencyCellModel()
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func updateCurrencyCellModel() {
+        currencyCellModel.removeAll()
+        currencyList.forEach { (symbol) in
+            if let converedRate = rateMap[symbol], let dependedRate = rateMap[baseCurrency] {
+                currencyCellModel.append(CurrencyCellModel(currencySymbol: symbol,
+                                                           currencyNumber: calculateCovertedNumber(currentNumber: currentNumber,
+                                                                                                   convertedCurrency: symbol),
+                                                           currencyRate: String(describing: (1.0 / dependedRate) * converedRate)))
+            }
+        }
+        if let base = currencyCellModel.first(where: { $0.currencySymbol == baseCurrency }) {
+            currencyCellModel.removeAll(where: { $0.currencySymbol == baseCurrency })
+            currencyCellModel.insert(base, at: 0)
+        }
+        callObserver()
     }
     
     func calculateCovertedNumber(currentNumber: String, convertedCurrency: String) -> String {

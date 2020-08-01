@@ -27,6 +27,7 @@
 		941F4D7C24D3A45D00CF8A10 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7B24D3A45D00CF8A10 /* ListViewModel.swift */; };
 		941F4D7E24D3FEAE00CF8A10 /* ViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */; };
 		941F4D8024D3FFEC00CF8A10 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */; };
+		941F4D8824D55E4200CF8A10 /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D8724D55E4200CF8A10 /* CurrencyCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		941F4D7B24D3A45D00CF8A10 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelObserver.swift; sourceTree = "<group>"; };
 		941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		941F4D8724D55E4200CF8A10 /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				941F4D7324D30DCA00CF8A10 /* CurrencyCell.swift */,
 				941F4D4C24D1718400CF8A10 /* CurrencyViewController.swift */,
 				941F4D7524D30EFF00CF8A10 /* CurrencyViewModel.swift */,
+				941F4D8724D55E4200CF8A10 /* CurrencyCellModel.swift */,
 			);
 			path = LiveCurrency;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				941F4D7C24D3A45D00CF8A10 /* ListViewModel.swift in Sources */,
 				941F4D8024D3FFEC00CF8A10 /* Bindable.swift in Sources */,
 				941F4D7E24D3FEAE00CF8A10 /* ViewModelObserver.swift in Sources */,
+				941F4D8824D55E4200CF8A10 /* CurrencyCellModel.swift in Sources */,
 				941F4D7824D3230C00CF8A10 /* ListCell.swift in Sources */,
 				941F4D7A24D3234A00CF8A10 /* ListViewController.swift in Sources */,
 				941F4D6E24D1C84E00CF8A10 /* SupportedCurrency.swift in Sources */,
