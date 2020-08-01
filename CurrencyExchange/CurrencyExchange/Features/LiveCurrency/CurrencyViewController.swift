@@ -36,6 +36,13 @@ class CurrencyViewController: UIViewController, Bindable {
         currencyNumberTextField.addTarget(self, action: #selector(self.editingChanged), for: .editingChanged)
         viewModel?.fetchLiveCurrencyRate()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard)))
+        
+        let timerTask = Timer(timeInterval: 60 * 30,
+                              target: self,
+                              selector: #selector(self.fetchLiveCurrencyRate),
+                              userInfo: nil,
+                              repeats: true)
+        RunLoop.main.add(timerTask, forMode: .common)
     }
     
     @IBAction func quoteCurrencyButton(sender: Any) {
@@ -64,6 +71,10 @@ class CurrencyViewController: UIViewController, Bindable {
     
     @objc func dismissKeyboard() {
         _ = currencyNumberTextField.resignFirstResponder()
+    }
+    
+    @objc func fetchLiveCurrencyRate() {
+        viewModel?.fetchLiveCurrencyRate()
     }
 }
 
