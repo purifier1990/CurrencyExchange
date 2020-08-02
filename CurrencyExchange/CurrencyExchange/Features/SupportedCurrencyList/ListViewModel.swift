@@ -10,20 +10,27 @@ import Foundation
 
 protocol ListViewModelType: ViewModelObservable {
     var supportedCurrencies: [String] { get set }
+    var service: SupportedListAPI { get set }
+    
     func fetchSupportedCurrencies()
 }
 
 class ListViewModel: ListViewModelType {
     weak var viewModelObserver: ViewModelObserver?
     
+    var service: SupportedListAPI
     var supportedCurrencies = [String]() {
         didSet {
             callObserver()
         }
     }
     
+    init(_ service: SupportedListAPI) {
+        self.service = service
+    }
+    
     func fetchSupportedCurrencies() {
-        Services().supportedCurrencies { [weak self] (result) in
+        service.supportedCurrencies { [weak self] (result) in
             switch result {
             case .success(let list):
                 self?.supportedCurrencies = Array(list.currencies.map { String("\($0.key):  \($0.value)") })

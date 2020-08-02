@@ -8,7 +8,15 @@
 
 import Foundation
 
-struct Services {
+protocol LiveCurrencyAPI {
+    func liveCurrencies(completion: @escaping (Result<LiveCurrency, ServiceError>) -> Void)
+}
+
+protocol SupportedListAPI {
+    func supportedCurrencies(completion: @escaping (Result<SupportedCurrency, ServiceError>) -> Void)
+}
+
+struct Services: LiveCurrencyAPI, SupportedListAPI {
     func liveCurrencies(completion: @escaping (Result<LiveCurrency, ServiceError>) -> Void) {
         let baseEndPoint = BaseEndPoint(baseURL: Constans.baseUrl, relativePath: "live", queryParameters: ["access_key": Constans.apiKey])
         ServiceManager.shared.get(urlString: baseEndPoint.path) { result in

@@ -46,7 +46,7 @@ class CurrencyViewController: UIViewController, Bindable {
     }
     
     @IBAction func quoteCurrencyButton(sender: Any) {
-        let listViewModel = ListViewModel()
+        let listViewModel = ListViewModel(Services())
         let listViewController = ListViewController.instantiate(listViewModel)
         present(listViewController, animated: true)
     }

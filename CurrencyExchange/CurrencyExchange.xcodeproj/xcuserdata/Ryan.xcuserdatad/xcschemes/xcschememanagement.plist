@@ -7,7 +7,30 @@
 		<key>CurrencyExchange.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>CurrencyExchangeTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>941F4D4424D1718400CF8A10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>941F4D8C24D70AC000CF8A10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>941F4DC824D70F1C00CF8A10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

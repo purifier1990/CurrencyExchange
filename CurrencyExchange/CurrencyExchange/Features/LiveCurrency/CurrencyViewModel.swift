@@ -14,6 +14,7 @@ protocol CurrencyViewModelType: ViewModelObservable {
     var rateMap: [String: Double] { set get }
     var currencyCellModel: [CurrencyCellModel] { get set }
     var currentNumber: String { set get }
+    var service: LiveCurrencyAPI { set get }
     
     func fetchLiveCurrencyRate()
     func calculateCovertedNumber(currentNumber: String, convertedCurrency: String) -> String
@@ -22,6 +23,7 @@ protocol CurrencyViewModelType: ViewModelObservable {
 class CurrencyViewModel: CurrencyViewModelType {
     weak var viewModelObserver: ViewModelObserver?
     
+    var service: LiveCurrencyAPI
     var baseCurrency = "USD" {
         didSet {
             if oldValue != baseCurrency {
@@ -40,8 +42,12 @@ class CurrencyViewModel: CurrencyViewModelType {
         }
     }
     
+    init(_ service: LiveCurrencyAPI) {
+        self.service = service
+    }
+    
     func fetchLiveCurrencyRate() {
-        Services().liveCurrencies { [weak self] (result) in
+        service.liveCurrencies { [weak self] (result) in
             switch result {
             case .success(let response):
                 self?.baseCurrency = response.source
