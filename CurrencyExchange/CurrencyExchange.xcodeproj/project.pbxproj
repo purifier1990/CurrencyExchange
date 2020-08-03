@@ -28,11 +28,13 @@
 		941F4D7E24D3FEAE00CF8A10 /* ViewModelObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7D24D3FEAE00CF8A10 /* ViewModelObserver.swift */; };
 		941F4D8024D3FFEC00CF8A10 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */; };
 		941F4D8824D55E4200CF8A10 /* CurrencyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F4D8724D55E4200CF8A10 /* CurrencyCellModel.swift */; };
-		94794F1A24D7223800CFF74D /* CurrencyExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F1924D7223800CFF74D /* CurrencyExchangeTests.swift */; };
 		94794F2524D7225D00CFF74D /* ViewModelObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F2224D7225C00CFF74D /* ViewModelObserverTests.swift */; };
 		94794F2624D7225D00CFF74D /* CurrencyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F2324D7225D00CFF74D /* CurrencyViewModelTests.swift */; };
 		94794F2F24D722A700CFF74D /* MockLiveCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F2D24D722A700CFF74D /* MockLiveCurrencyService.swift */; };
 		94794F3024D722A700CFF74D /* MockLiveCurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F2E24D722A700CFF74D /* MockLiveCurrencyResponse.swift */; };
+		94794F3224D7CC6600CFF74D /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F3124D7CC6600CFF74D /* MockListService.swift */; };
+		94794F3624D7CC9500CFF74D /* MockListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F3524D7CC9500CFF74D /* MockListResponse.swift */; };
+		94794F3824D7CF4100CFF74D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94794F3724D7CF4100CFF74D /* ListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +72,14 @@
 		941F4D7F24D3FFEC00CF8A10 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		941F4D8724D55E4200CF8A10 /* CurrencyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellModel.swift; sourceTree = "<group>"; };
 		94794F1724D7223800CFF74D /* CurrencyExchangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyExchangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		94794F1924D7223800CFF74D /* CurrencyExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeTests.swift; sourceTree = "<group>"; };
 		94794F1B24D7223800CFF74D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94794F2224D7225C00CFF74D /* ViewModelObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelObserverTests.swift; sourceTree = "<group>"; };
 		94794F2324D7225D00CFF74D /* CurrencyViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyViewModelTests.swift; sourceTree = "<group>"; };
 		94794F2D24D722A700CFF74D /* MockLiveCurrencyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLiveCurrencyService.swift; sourceTree = "<group>"; };
 		94794F2E24D722A700CFF74D /* MockLiveCurrencyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLiveCurrencyResponse.swift; sourceTree = "<group>"; };
+		94794F3124D7CC6600CFF74D /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
+		94794F3524D7CC9500CFF74D /* MockListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListResponse.swift; sourceTree = "<group>"; };
+		94794F3724D7CF4100CFF74D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,8 +201,8 @@
 				94794F2C24D722A700CFF74D /* Mock */,
 				94794F2324D7225D00CFF74D /* CurrencyViewModelTests.swift */,
 				94794F2224D7225C00CFF74D /* ViewModelObserverTests.swift */,
-				94794F1924D7223800CFF74D /* CurrencyExchangeTests.swift */,
 				94794F1B24D7223800CFF74D /* Info.plist */,
+				94794F3724D7CF4100CFF74D /* ListViewModelTests.swift */,
 			);
 			path = CurrencyExchangeTests;
 			sourceTree = "<group>";
@@ -208,6 +212,8 @@
 			children = (
 				94794F2D24D722A700CFF74D /* MockLiveCurrencyService.swift */,
 				94794F2E24D722A700CFF74D /* MockLiveCurrencyResponse.swift */,
+				94794F3124D7CC6600CFF74D /* MockListService.swift */,
+				94794F3524D7CC9500CFF74D /* MockListResponse.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -339,10 +345,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				94794F2524D7225D00CFF74D /* ViewModelObserverTests.swift in Sources */,
-				94794F1A24D7223800CFF74D /* CurrencyExchangeTests.swift in Sources */,
 				94794F2F24D722A700CFF74D /* MockLiveCurrencyService.swift in Sources */,
+				94794F3224D7CC6600CFF74D /* MockListService.swift in Sources */,
 				94794F3024D722A700CFF74D /* MockLiveCurrencyResponse.swift in Sources */,
 				94794F2624D7225D00CFF74D /* CurrencyViewModelTests.swift in Sources */,
+				94794F3824D7CF4100CFF74D /* ListViewModelTests.swift in Sources */,
+				94794F3624D7CC9500CFF74D /* MockListResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

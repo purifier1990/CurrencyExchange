@@ -11,4 +11,8 @@ class Constans {
     static let apiKey = "8cedff1cdd23c4125076341a179783ff"
     static let baseUrl = "http://api.currencylayer.com/"
     static let quoteButtonText = "Quote Currency: "
+    static let genericErrorTitle = "Something is wrong"
+    static let genericErrorMessage = "Sorry, please try again later"
+    static let okText = "OK"
+    static let retryText = "Retry"
 }

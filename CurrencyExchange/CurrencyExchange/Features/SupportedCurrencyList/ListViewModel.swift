@@ -11,6 +11,7 @@ import Foundation
 protocol ListViewModelType: ViewModelObservable {
     var supportedCurrencies: [String] { get set }
     var service: SupportedListAPI { get set }
+    var hasError: Bool { get set }
     
     func fetchSupportedCurrencies()
 }
@@ -20,6 +21,11 @@ class ListViewModel: ListViewModelType {
     
     var service: SupportedListAPI
     var supportedCurrencies = [String]() {
+        didSet {
+            callObserver()
+        }
+    }
+    var hasError: Bool = false {
         didSet {
             callObserver()
         }
@@ -34,8 +40,8 @@ class ListViewModel: ListViewModelType {
             switch result {
             case .success(let list):
                 self?.supportedCurrencies = Array(list.currencies.map { String("\($0.key):  \($0.value)") })
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self?.hasError = true
             }
         }
     }

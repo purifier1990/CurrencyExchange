@@ -15,6 +15,7 @@ protocol CurrencyViewModelType: ViewModelObservable {
     var currencyCellModel: [CurrencyCellModel] { get set }
     var currentNumber: String { set get }
     var service: LiveCurrencyAPI { set get }
+    var hasError: Bool { set get }
     
     func fetchLiveCurrencyRate()
     func calculateCovertedNumber(currentNumber: String, convertedCurrency: String) -> String
@@ -41,6 +42,11 @@ class CurrencyViewModel: CurrencyViewModelType {
             }
         }
     }
+    var hasError: Bool = false {
+        didSet {
+            callObserver()
+        }
+    }
     
     init(_ service: LiveCurrencyAPI) {
         self.service = service
@@ -56,8 +62,8 @@ class CurrencyViewModel: CurrencyViewModelType {
                     self?.rateMap[String(key.suffix(3))] = Double(value)
                 }
                 self?.updateCurrencyCellModel()
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                self?.hasError = true
             }
         }
     }

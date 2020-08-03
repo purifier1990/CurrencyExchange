@@ -26,9 +26,14 @@ class ListViewController: UIViewController, Bindable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureTableView()
+        viewModel?.fetchSupportedCurrencies()
+    }
+    
+    fileprivate func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        viewModel?.fetchSupportedCurrencies()
     }
 }
 
@@ -60,6 +65,18 @@ extension ListViewController: ViewModelObserver {
     func viewModelUpdated(_ viewModel: ViewModelObservable) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            
+            if let error = self.viewModel?.hasError {
+                if error {
+                    self.viewModel?.hasError = false
+                    let alertViewController = UIAlertController(title: Constans.genericErrorTitle, message: Constans.genericErrorMessage, preferredStyle: .alert)
+                    alertViewController.addAction(UIAlertAction(title: Constans.okText, style: .cancel, handler: nil))
+                    alertViewController.addAction(UIAlertAction(title: Constans.retryText, style: .default, handler: { (_) in
+                        self.viewModel?.fetchSupportedCurrencies()
+                    }))
+                    self.present(alertViewController, animated: true, completion: nil)
+                }
+            }
         }
     }
 }

@@ -32,5 +32,12 @@ class CurrencyViewModelTests: XCTestCase {
         XCTAssert(currencyViewModel.baseCurrency == "AFN")
         XCTAssert(currencyViewModel.rateMap == ["AED": 3.6729500293731689, "AFN": 76.703994750976563])
         XCTAssert(currencyViewModel.currentNumber == "100.0")
+        XCTAssert(currencyViewModel.currencyList.count == 2)
+    }
+    
+    func testUnhappyCaseLiveCurrency() {
+        XCTAssert(currencyViewModel.hasError == false)
+        triggerLiveAPI(error: .unknownResponse)
+        XCTAssert(currencyViewModel.hasError == true)
     }
 }

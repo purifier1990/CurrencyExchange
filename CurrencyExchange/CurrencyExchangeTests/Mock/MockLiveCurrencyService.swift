@@ -15,8 +15,8 @@ class MockLiveCurrencyService: LiveCurrencyAPI {
     
     func liveCurrencies(completion: @escaping (Result<LiveCurrency, ServiceError>) -> Void) {
         DispatchQueue.main.async {
-            if let _ = self.error {
-                completion(.failure(.unknownResponse))
+            if let error = self.error {
+                completion(.failure(error))
             } else {
                 completion(.success(LiveCurrency(success: self.mockResponse.success,
                 terms: self.mockResponse.terms,

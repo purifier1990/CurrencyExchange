@@ -29,20 +29,35 @@ class CurrencyViewController: UIViewController, Bindable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configureTableView()
+        configureCurrencyInputField()
+        configureAPIRereashTimer()
+        configureView()
+        viewModel?.fetchLiveCurrencyRate()
+    }
+    
+    fileprivate func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    fileprivate func configureCurrencyInputField() {
         currencyNumberTextField.delegate = self
         currencyNumberTextField.addTarget(self, action: #selector(self.editingChanged), for: .editingChanged)
-        viewModel?.fetchLiveCurrencyRate()
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard)))
-        
+    }
+    
+    fileprivate func configureAPIRereashTimer() {
         let timerTask = Timer(timeInterval: 60 * 30,
                               target: self,
                               selector: #selector(self.fetchLiveCurrencyRate),
                               userInfo: nil,
                               repeats: true)
         RunLoop.main.add(timerTask, forMode: .common)
+    }
+    
+    fileprivate func configureView() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard)))
     }
     
     @IBAction func quoteCurrencyButton(sender: Any) {
@@ -110,6 +125,18 @@ extension CurrencyViewController: ViewModelObserver {
     func viewModelUpdated(_ viewModel: ViewModelObservable) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            
+            if let error = self.viewModel?.hasError {
+                if error {
+                    self.viewModel?.hasError = false
+                    let alertViewController = UIAlertController(title: Constans.genericErrorTitle, message: Constans.genericErrorMessage, preferredStyle: .alert)
+                    alertViewController.addAction(UIAlertAction(title: Constans.okText, style: .cancel, handler: nil))
+                    alertViewController.addAction(UIAlertAction(title: Constans.retryText, style: .default, handler: { (_) in
+                        self.viewModel?.fetchLiveCurrencyRate()
+                    }))
+                    self.present(alertViewController, animated: true, completion: nil)
+                }
+            }
         }
     }
 }
